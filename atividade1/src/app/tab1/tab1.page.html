@@ -1,5 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+     <io-buttons slot="start">
+        <ion-button color="primary"> 
+          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </io-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button color="secudary">ok</ion-button>
+      </ion-buttons>
+
     <ion-title>
       Tab 1
     </ion-title>
@@ -14,4 +24,8 @@
   </ion-header>
 
   <app-explore-container name="Tab 1 page"></app-explore-container>
+    <div id="container">
+      <ion-button routerLink="/novo">Novo contato</ion-button>
+    </div>
 </ion-content>
+
