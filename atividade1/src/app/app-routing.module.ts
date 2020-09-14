@@ -9,6 +9,10 @@ const routes: Routes = [
   {
     path: 'novo',
     loadChildren: () => import('./novo/novo.module').then( m => m.NovoPageModule)
+  },
+  {
+    path: 'form-contato',
+    loadChildren: () => import('./form-contato/form-contato.module').then( m => m.FormContatoPageModule)
   }
 ];
 @NgModule({
