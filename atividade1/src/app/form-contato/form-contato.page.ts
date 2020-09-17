@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { ContatoService } from '../services/contato.service';
 @Component({
   selector: 'app-form-contato',
   templateUrl: './form-contato.page.html',
@@ -10,12 +11,30 @@ export class FormContatoPage implements OnInit {
   nome: string;
   email: string;
   telefone: string;
-  constructor() { }
+  constructor(private service: ContatoService ) { }
 
   ngOnInit() {
+
+  }
+
+  enviarContato(){
+    let contato = {};
+
     console.log("Nome: " + this.nome);
-    console.log("E-mail " + this.email);
+    console.log("E-mail " + this.email);  
     console.log("Telefone " + this.telefone);
+
+    //utilizar atributo que foi criado na coleção
+    contato ['nome'] = this.nome;
+    contato ['email'] = this.email;
+    contato ['telefone'] = this.telefone;
+
+    console.log(contato);
+    this.service.incluir(contato);
+
+
+
+
   }
 
 }
