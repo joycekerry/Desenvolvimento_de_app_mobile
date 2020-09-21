@@ -26,4 +26,10 @@ export class ContatoService {
       
   }
 
+  alterar(contato, id){
+    //passar parametro
+    return this.firestore.doc('contato/' + id ). update(contato);
+
+  }
+
 }

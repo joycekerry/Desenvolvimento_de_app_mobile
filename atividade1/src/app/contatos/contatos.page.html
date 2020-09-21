@@ -1,6 +1,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Contatos</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button routerLink="/form-contato">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
     <io-buttons slot="start">
       <ion-button color="primary" routerLink="/tabs" > 
         <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
@@ -17,7 +24,7 @@
       <ion-card-subtitle>{{item.telefone}}</ion-card-subtitle>
     </ion-card-haeder>
     <ion-card-content>
-      <ion-button>Editar</ion-button>
+      <ion-button (click)="inicioAlteracao(item)" >Editar</ion-button>
       <ion-button>Excluit</ion-button>
     </ion-card-content>
   </ion-card>

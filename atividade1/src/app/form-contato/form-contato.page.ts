@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 //toda comunicação entre projeto e firebase
+//trabalhando com navegação é route (importação de class)
+import { NavController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+
 import { ContatoService } from '../services/contato.service';
 @Component({
   selector: 'app-form-contato',
@@ -12,11 +16,27 @@ export class FormContatoPage implements OnInit {
   nome: string;
   email: string;
   telefone: string;
-  constructor(private service: ContatoService ) { }
+
+  // é o que vai determinar qual o metodo do meu serve será invocado 
+  //id = null : criação de objeto nulo 
+  id = null;
+
+  //passar os dois parametros dentro do constructor
+  constructor(private service: ContatoService,
+          private nav: NavController,
+          private rota: ActivatedRoute ) { }
 
   ngOnInit() {
+    //sentido de usar ActivateRout(=>: armazenamento de paramentro)
+    this.id = this.rota.snapshot.params['id'];
+    this.nome = this.rota.snapshot.params['nome'];
+    this.email = this.rota.snapshot.params['email'];
+    this.telefone = this.rota.snapshot.params['telefone']
+
+    console.log(this.id);
 
   }
+  
 
   enviarContato(){
     let contato = {};
@@ -33,11 +53,13 @@ export class FormContatoPage implements OnInit {
     contato ['telefone'] = this.telefone;
 
     console.log(contato);
-    this.service.incluir(contato);
+    if(this.id == null){
+      this.service.incluir(contato);
+    } else {
+      this.service.alterar(contato, this.id);
+    }
 
-
-
-
+    this.nav.navigateForward("contatos");
   }
 
 }
