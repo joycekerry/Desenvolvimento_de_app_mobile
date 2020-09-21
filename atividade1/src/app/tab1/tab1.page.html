@@ -1,14 +1,8 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-     <io-buttons slot="start">
-        <ion-button color="primary"> 
-          <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
-        </ion-button>
-      </io-buttons>
-
-      <ion-buttons slot="end">
-        <ion-button color="secudary">ok</ion-button>
-      </ion-buttons>
+  <ion-buttons slot="end">
+      <ion-button color="secudary">ok</ion-button>
+  </ion-buttons>
 
     <ion-title>
       Tab 1
@@ -28,7 +22,10 @@
       <ion-button routerLink="/novo">Novo</ion-button>
     </div>
     <div>
-      <ion-button routerLink="/form-contato">Contato</ion-button>
+      <ion-button routerLink="/form-contato"> Cadastrar Contato</ion-button>
+    </div>
+    <div>
+      <ion-button routerLink="/contatos"> Lista de Contatos</ion-button>
     </div>
 </ion-content>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+//toda comunicação entre projeto e firebase
 import { ContatoService } from '../services/contato.service';
 @Component({
   selector: 'app-form-contato',
@@ -19,12 +20,14 @@ export class FormContatoPage implements OnInit {
 
   enviarContato(){
     let contato = {};
+    //chaves indicação de json
 
     console.log("Nome: " + this.nome);
     console.log("E-mail " + this.email);  
     console.log("Telefone " + this.telefone);
 
-    //utilizar atributo que foi criado na coleção
+    //utilizar atributo que foi criado na coleção (mesmo atributo do firebase)
+    //this.nome valido
     contato ['nome'] = this.nome;
     contato ['email'] = this.email;
     contato ['telefone'] = this.telefone;

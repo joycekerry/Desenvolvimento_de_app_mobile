@@ -1,6 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>form-contato</ion-title>
+    <io-buttons slot="start">
+      <ion-button color="primary" routerLink="/tabs" > 
+        <ion-icon slot="icon-only" name="arrow-back-outline" ></ion-icon>
+      </ion-button>
+    </io-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -26,11 +31,5 @@
         <ion-button (click)="enviarContato()">Salvar</ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-button routerLink="/tabs">voltar para tab1</ion-button>
-      </ion-col>
-    </ion-row>
   </ion-grid>
-
 </ion-content>
