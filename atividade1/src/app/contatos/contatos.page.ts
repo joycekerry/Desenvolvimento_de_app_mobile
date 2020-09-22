@@ -2,10 +2,11 @@
 import { Component, OnInit } from '@angular/core';
 //importa o serviço
 
-//navegar passando informção
-import { NavController } from '@ionic/angular';
+//navegar passando informção 
+import { NavController, AlertController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ContatoService } from '../services/contato.service';
+import { removeSummaryDuplicates } from '@angular/compiler';
 @Component({
   selector: 'app-contatos',
   templateUrl: './contatos.page.html',
@@ -20,7 +21,8 @@ export class ContatosPage implements OnInit {
     //passando como paramentro (portando como atributo)
     //metodo é invocado
               private rota: ActivatedRoute,
-              private nav: NavController
+              private nav: NavController,
+              private alerta: AlertController
     ) { }
 
   ngOnInit() {
@@ -62,4 +64,46 @@ export class ContatosPage implements OnInit {
 
   }
 
+  async remover(registro) {
+    const mensagem = await this.alerta.create({
+      header: "Atenção",
+      message: "Deseja excluir essa tarefa ?",
+      //atributo botões
+      //chave: simboliza json
+      //cochetes: simboliza um array
+      buttons: [
+        { 
+          text: "OK",
+          //função que vai chamar o botão (caso se for selecionado)
+          handler: () => {
+            this.service.excluir(registro);
+            this.mensagemConfirmacao();
+          }
+        },
+         {
+           text: "Cancelar",
+           handler:() => {
+          
+          }
+        }
+      ] 
+    }); 
+    await mensagem.present();
+  }
+
+  async mensagemConfirmacao(){
+   const confirmacao = await this.alerta.create({
+     header: "Sucesso!",
+     message: "Tarefa excluída com sucesso!",
+     buttons: [
+       {
+         text: "OK",
+         handler:() => {}
+       }
+     ]
+   });
+
+   await confirmacao.present();
+
+  }
 }

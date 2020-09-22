@@ -32,4 +32,10 @@ export class ContatoService {
 
   }
 
+  excluir(contato) {
+    //passando o objeto todo
+    return this.firestore.doc('contato/' + contato.id).delete();
+  }
+
 }
+
